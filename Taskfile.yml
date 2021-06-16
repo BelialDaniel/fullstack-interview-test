@@ -1,0 +1,32 @@
+version: "3"
+
+tasks:
+  init_backend:
+    dir: ./backend
+    desc: Init poetry
+    cmds:
+      - poetry shell
+
+  install_backend_dependencies:
+    dir: ./backend
+    desc: Intall dependencies
+    cmds:
+      - poetry install
+
+  run_backend:
+    dir: ./backend
+    desc: Start Server
+    cmds:
+      - poetry run manage.py runserver
+
+  install_app_dependencies:
+    dir: ./app
+    desc: Install dependencies
+    cmds:
+      - yarn
+
+  run_app:
+    dir: ./app
+    desc: Start app
+    cmds:
+      - yarn serve
