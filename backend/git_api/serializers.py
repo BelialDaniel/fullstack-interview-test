@@ -25,10 +25,25 @@ class PullRequestSerializer(serializers.ModelSerializer):
             'author',
             'title',
             'description',
-            'status'
+            'status',
+            'from_branch',
+            'to_breanch'   
         ]
         read_only = ['id']
     
     author = AuthorSerializer()
+
+    def create(self, validated_data):
+        author_data = validated_data.pop('author')
+        author_serializer = AuthorSerializer(data=author_data)
+
+        if not author_serializer.is_valid():
+            raise Exception(
+                f'Could not create author for PR {validated_data.get("title", None)}')
+
+        author = author_serializer.save()
+        validated_data.update(dict(author=author))
+        return PullRequest.objects.create(**validated_data)
+        
 
         
