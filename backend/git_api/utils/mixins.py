@@ -89,7 +89,16 @@ class GitData(GitRepo):
         if not commit:
             raise Exception(f'No commit fount with hash {hash}')
 
-        return self._get_commit_dict(commit)
+        modified_files = list()
+        modified_files = [tree.blobs for tree in commit.tree.trees]
+        # Here I am flattening the list of lists
+        modified_files = sum(modified_files, [])
+        commit = self._get_commit_dict(commit)
+        commit.update(dict(files=dict(
+            count=len(modified_files),
+            names=[dict(name=file.name, path=file.path) for file in modified_files]
+        )))
+        return commit
 
 
 
