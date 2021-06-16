@@ -1,18 +1,38 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
+  <div>
+    <div v-for="branch in branchList" :key="branch.pk">
+      <router-link :to="`/branches/${branch.name}`">
+        <div>
+          <span>Name:</span>
+          <span>{{ branch.name }}</span>
+        </div>
+      </router-link>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
-import HelloWorld from "@/components/HelloWorld.vue"; // @ is an alias to /src
+import { getBranches } from "@/api/branches.api";
+import BranchList from "@/models/branchList";
 
 @Options({
-  components: {
-    HelloWorld,
-  },
+  components: {},
 })
-export default class Home extends Vue {}
+export default class Home extends Vue {
+  branchList: Array<BranchList> = [];
+
+  mounted() {
+    this.getBranchList();
+  }
+
+  async getBranchList() {
+    try {
+      const response: any = await getBranches();
+      this.branchList = response.data;
+    } catch (exception) {
+      throw new Error(exception);
+    }
+  }
+}
 </script>
