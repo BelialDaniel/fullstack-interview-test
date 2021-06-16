@@ -22,6 +22,17 @@ class BranchesViewSe(ViewSet, GitData):
     def list(self, request):
         branches = self.get_branches()
         return Response(branches)
-    
 
-    def retrieve(self, request, slug=None):
+    def retrieve(self, request, pk=None):
+        branch = self.get_branch(pk)
+        return Response(branch)
+
+
+class CommitsViewSet(ViewSet, GitData):
+    def list(self, request):
+        commits = self.get_commits()
+        return Response(commits)
+    
+    def retrieve(self, request, pk=None):
+        branch = self.get_commit(pk)
+        return Response(branch)
