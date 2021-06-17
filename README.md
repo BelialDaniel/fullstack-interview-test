@@ -1,6 +1,6 @@
 # Instructions
 
-## first install task
+## first install task https://taskfile.dev/#/usage
 - brew install go-task/tap/go-task
 
 ## init backend shell
