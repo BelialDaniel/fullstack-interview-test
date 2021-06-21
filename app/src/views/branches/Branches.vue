@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="card">
     <div v-for="branch in branchList" :key="branch.pk">
       <router-link :to="`/branches/${branch.name}`">
         <div>
