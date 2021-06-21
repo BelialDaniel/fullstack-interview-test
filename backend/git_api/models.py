@@ -24,4 +24,4 @@ class PullRequest(models.Model):
                               choices=Status.choices,
                               default=Status.OPEN)
     from_branch = models.TextField(max_length=200, null=False, default='')
-    to_breanch = models.TextField(max_length=200, null=False, default='')
+    to_branch = models.TextField(max_length=200, null=False, default='')

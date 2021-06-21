@@ -27,7 +27,7 @@ class PullRequestSerializer(serializers.ModelSerializer):
             'description',
             'status',
             'from_branch',
-            'to_breanch'   
+            'to_branch'   
         ]
         read_only = ['id']
     
