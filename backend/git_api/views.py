@@ -3,6 +3,7 @@ from rest_framework.response import Response
 from django.apps import apps
 from git_api import serializers
 from git_api.utils.mixins import GitData
+from rest_framework.decorators import action
 
 Author = apps.get_model('git_api', 'Author')
 PullRequest = apps.get_model('git_api', 'PullRequest')
@@ -16,6 +17,14 @@ class AuthorsViewSet(ModelViewSet):
 class PullRequestsViewSet(ModelViewSet):
     queryset = PullRequest.objects.all()
     serializer_class = serializers.PullRequestSerializer
+
+    @action(detail=False, methods=['patch'])
+    def merge(self, request,  pk=None):
+        pass
+
+    @action(detail=False, methods=['patch'])
+    def close(self, request,  pk=None):
+        pass
 
 
 class BranchesViewSe(ViewSet, GitData):
