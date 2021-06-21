@@ -10,6 +10,7 @@ djangorestframework = "^3.12.4"
 Django = "^3.2.4"
 python-dotenv = "^0.17.1"
 GitPython = "^3.1.17"
+django-cors-headers = "^3.7.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"

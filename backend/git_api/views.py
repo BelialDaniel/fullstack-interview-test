@@ -22,11 +22,11 @@ class PullRequestsViewSet(ModelViewSet):
 
     @action(detail=False, methods=['patch'])
     def merge(self, request,  pk=None):
-        pass
+        breakpoint()
 
     @action(detail=False, methods=['patch'])
     def close(self, request,  pk=None):
-        pass
+        breakpoint()
 
 
 class BranchesViewSe(ViewSet, GitData):
