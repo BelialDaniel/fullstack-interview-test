@@ -22,7 +22,6 @@
       </div>
     </div>
   </div>
-  <div v-else>BelialDaniel</div>
 </template>
 
 <script lang="ts">
