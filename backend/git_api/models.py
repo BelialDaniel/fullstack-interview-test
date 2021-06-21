@@ -11,6 +11,8 @@ class Author(models.Model):
 class PullRequest(models.Model):
     class Meta:
         db_table = 'pull_requests'
+        unique_together = ['from_branch', 'to_branch']
+
 
     class Status(models.TextChoices):
         OPEN = 'open', 'Open'
