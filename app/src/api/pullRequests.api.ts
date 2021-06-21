@@ -13,4 +13,10 @@ const getPullRequest = (id: number): Promise<any> =>
 const createPullRequest = (data: PullRequest): Promise<any> =>
   axios.post(`${HOST}${ENDPOINT}`, data);
 
-export { getPullRequests, getPullRequest, createPullRequest };
+const merge = (pk: string | number): Promise<any> =>
+  axios.patch(`${HOST}${ENDPOINT}/${pk}/merge`);
+
+const close = (pk: string | number): Promise<any> =>
+  axios.patch(`${HOST}${ENDPOINT}/${pk}/close`);
+
+export { getPullRequests, getPullRequest, createPullRequest, merge, close };
