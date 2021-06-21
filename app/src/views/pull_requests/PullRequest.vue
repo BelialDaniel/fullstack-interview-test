@@ -22,7 +22,7 @@
             <span class="tag is-primary mr-2">
               {{ pullRequest.from_branch }}
             </span>
-            <span class="tag is-info">{{ pullRequest.to_breanch }}</span>
+            <span class="tag is-info">{{ pullRequest.to_branch }}</span>
           </div>
         </div>
         <div class="content">

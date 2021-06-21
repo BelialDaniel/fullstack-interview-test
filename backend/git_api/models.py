@@ -11,6 +11,8 @@ class Author(models.Model):
 class PullRequest(models.Model):
     class Meta:
         db_table = 'pull_requests'
+        unique_together = ['from_branch', 'to_branch']
+
 
     class Status(models.TextChoices):
         OPEN = 'open', 'Open'
@@ -24,4 +26,4 @@ class PullRequest(models.Model):
                               choices=Status.choices,
                               default=Status.OPEN)
     from_branch = models.TextField(max_length=200, null=False, default='')
-    to_breanch = models.TextField(max_length=200, null=False, default='')
+    to_branch = models.TextField(max_length=200, null=False, default='')
