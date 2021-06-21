@@ -41,7 +41,7 @@
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
-import { getPullRequest } from "@/api/pullRequests.api";
+import { getPullRequest, merge, close } from "@/api/pullRequests.api";
 import PullRequest from "@/models/pullRequest";
 
 @Options({
@@ -65,12 +65,20 @@ export default class PullRequestView extends Vue {
     }
   }
 
-  mergePullRequest() {
-    console.log("Merge");
+  async mergePullRequest() {
+    try {
+      await merge(this.pullRequest.id);
+    } catch (exception) {
+      throw new Error(exception);
+    }
   }
 
-  closePullRequest() {
-    console.log("Close");
+  async closePullRequest() {
+    try {
+      await close(this.pullRequest.id);
+    } catch (exception) {
+      throw new Error(exception);
+    }
   }
 }
 </script>
