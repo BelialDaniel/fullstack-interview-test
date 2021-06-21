@@ -79,7 +79,7 @@ import PullRequest from "@/models/pullRequest";
 @Options({
   components: {},
 })
-export default class Commits extends Vue {
+export default class CreatePullRequestView extends Vue {
   branches: Array<BranchList> = [];
   pullRequest: PullRequest = {
     author: {

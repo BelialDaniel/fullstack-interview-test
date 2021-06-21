@@ -27,7 +27,7 @@ import Commit from "@/models/commit";
 @Options({
   components: {},
 })
-export default class Commits extends Vue {
+export default class CommitView extends Vue {
   commitData: Commit | null = null;
 
   mounted() {

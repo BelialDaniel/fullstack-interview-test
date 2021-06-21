@@ -23,7 +23,7 @@ import PullRequest from "@/models/pullRequest";
 @Options({
   components: {},
 })
-export default class PullRequests extends Vue {
+export default class PullRequestsView extends Vue {
   pullRequests: Array<PullRequest> = [];
 
   mounted() {
