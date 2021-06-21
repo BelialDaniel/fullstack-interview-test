@@ -1,25 +1,29 @@
 <template>
   <div v-if="branch">
-    <div>
-      <div>{{ branch.name }}</div>
-      <div>
-        <button>
-          <router-link to="/pull_requests/create">Creatr PR</router-link>
-        </button>
-      </div>
+    <div class="pb-1">
+      <h1 class="">{{ branch.name }}</h1>
+      <button class="button small is-outlined mb-2">
+        <router-link to="/pull_requests/create">
+          Create Pull Rrequest
+        </router-link>
+      </button>
     </div>
-    <div v-for="commit in branch.commits" :key="commit.key">
-      <div>
-        <div>
-          <span>{{ commit.author.name }}</span>
-          <span>{{ commit.author.email }}</span>
+    <div>
+      <div class="card mb-1" v-for="commit in branch.commits" :key="commit.key">
+        <div class="card-content">
+          <div class="media">
+            <div class="media-content">
+              <p class="title is-4">{{ commit.author.name }}</p>
+              <p class="subtitle is-6">{{ commit.author.email }}</p>
+              <p class="subtitle is-6">{{ commit.key }}</p>
+            </div>
+          </div>
+          <p>
+            {{ commit.message }}
+          </p>
+          <time> {{ commit.created_on }}</time>
         </div>
-        <span>{{ commit.created_on }}</span>
       </div>
-      <div>
-        <span>{{ commit.key }}</span>
-      </div>
-      <div>{{ commit.message }}</div>
     </div>
   </div>
 </template>
@@ -47,6 +51,10 @@ export default class BranchView extends Vue {
     } catch (exception) {
       throw new Error(exception);
     }
+  }
+
+  onClick() {
+    console.log("Clicked xD");
   }
 }
 </script>

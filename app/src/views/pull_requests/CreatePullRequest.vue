@@ -2,69 +2,96 @@
   <div>
     <form @submit.prevent>
       <h1>Author</h1>
-      <div>
-        <label for="name">Name</label>
-        <input type="text" v-model.trim="pullRequest.author.name" id="name" />
-      </div>
-      <div>
-        <label for="last_name">Last name</label>
-        <input
-          type="text"
-          v-model.trim="pullRequest.author.last_name"
-          id="last_name"
-        />
-      </div>
-      <div>
-        <label for="email">Email</label>
-        <input
-          type="text"
-          v-model.trim="pullRequest.author.email"
-          placeholder="mail@email.com"
-          id="email"
-        />
+      <div class="card">
+        <div class="card-content">
+          <div class="field">
+            <label class="label" for="name">Name</label>
+            <input
+              class="input"
+              type="text"
+              v-model.trim="pullRequest.author.name"
+              id="name"
+            />
+          </div>
+          <div class="field">
+            <label class="label" for="last_name">Last name</label>
+            <input
+              class="input"
+              type="text"
+              v-model.trim="pullRequest.author.last_name"
+              id="last_name"
+            />
+          </div>
+          <div class="field">
+            <label class="label" for="email">Email</label>
+            <input
+              class="input mb-2"
+              type="text"
+              v-model.trim="pullRequest.author.email"
+              placeholder="mail@email.com"
+              id="email"
+            />
+          </div>
+        </div>
       </div>
       <h1>Pull request</h1>
-      <div>
-        <label for="title">Title</label>
-        <input type="text" v-model.trim="pullRequest.title" id="title" />
-      </div>
-      <div>
-        <div>
-          <label for="description">Description</label>
+      <div class="card mb-2">
+        <div class="card-content">
+          <div class="field">
+            <label class="label" for="title">Title</label>
+            <input
+              class="input"
+              type="text"
+              v-model.trim="pullRequest.title"
+              id="title"
+            />
+          </div>
+          <div class="is-flex">
+            <div class="field">
+              <label class="label"> From branch </label>
+              <div class="select">
+                <select v-model.trim="pullRequest.from_branch">
+                  <option
+                    v-for="branch in branches"
+                    :value="branch.name"
+                    :key="branch.name"
+                  >
+                    {{ branch.name }}
+                  </option>
+                </select>
+              </div>
+            </div>
+            <div class="field ml-1">
+              <label class="label"> To branch </label>
+              <div class="select">
+                <select v-model.trim="pullRequest.to_breanch">
+                  <option
+                    v-for="branch in branches"
+                    :value="branch.name"
+                    :key="branch.name"
+                  >
+                    {{ branch.name }}
+                  </option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="field">
+            <label class="label" for="description">Description</label>
+            <textarea
+              class="textarea"
+              type="text"
+              v-model.trim="pullRequest.description"
+              id="description"
+            />
+          </div>
+          <div class="is-flex is-justify-content-flex-end">
+            <button class="button is-link" @click="submitPullRequest">
+              Create pull request
+            </button>
+          </div>
         </div>
-        <textarea
-          type="text"
-          v-model.trim="pullRequest.description"
-          id="description"
-        />
       </div>
-      <div>
-        From Branch
-        <select v-model.trim="pullRequest.from_branch">
-          <option
-            v-for="branch in branches"
-            :value="branch.name"
-            :key="branch.name"
-          >
-            {{ branch.name }}
-          </option>
-        </select>
-      </div>
-      <div>
-        To Branch
-        <select v-model.trim="pullRequest.to_breanch">
-          <option
-            v-for="branch in branches"
-            :value="branch.name"
-            :key="branch.name"
-          >
-            {{ branch.name }}
-          </option>
-        </select>
-      </div>
-      <button class="button" @click="submitPullRequest">
-        Create pull request
-      </button>
     </form>
   </div>
 </template>

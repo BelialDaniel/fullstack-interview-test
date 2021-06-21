@@ -1,14 +1,28 @@
 <template>
   <div>
-    <div v-for="(pullRequest, index) in pullRequests" :key="index">
+    <h1>Pull Requests</h1>
+    <div class="card" v-for="(pullRequest, index) in pullRequests" :key="index">
       <router-link :to="`/pull_requests/${pullRequest.id}`">
-        <div>
-          <div>{{ pullRequest.title }}</div>
-          <div>{{ pullRequest.status }}</div>
-        </div>
-        <div>
-          <div>{{ pullRequest.author.name }}</div>
-          <div>{{ pullRequest.author.email }}</div>
+        <div class="card-content">
+          <div class="is-flex mb-1">
+            <p class="title is-1 is-marginless">{{ pullRequest.title }}</p>
+            <span
+              class="tag ml-1"
+              :class="[
+                pullRequest.status === 'open' ? 'is-success' : 'is-danger',
+              ]"
+            >
+              {{ pullRequest.status }}
+            </span>
+          </div>
+          <div class="media">
+            <div class="media-content">
+              <p class="title is-4">
+                {{ pullRequest.author.name }}
+              </p>
+              <p class="subtitle is-6">{{ pullRequest.author.email }}</p>
+            </div>
+          </div>
         </div>
       </router-link>
     </div>

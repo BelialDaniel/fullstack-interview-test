@@ -1,15 +1,20 @@
 <template>
   <div>
-    <div v-for="commit in commits" :key="commit.key">
-      <router-link :to="`/commits/${commit.key}`">
-        <div>
-          <span>{{ commit.author.name }}</span>
-          <span>{{ commit.author.email }}</span>
-        </div>
-        <div>
-          <span>{{ commit.key }}</span>
-        </div>
-      </router-link>
+    <h1>Commits</h1>
+    <div class="card mb-1" v-for="commit in commits" :key="commit.key">
+      <div class="card-content">
+        <router-link :to="`/commits/${commit.key}`">
+          <div class="media">
+            <div class="media-content">
+              <p class="title is-4">{{ commit.author.name }}</p>
+              <p class="subtitle is-6">{{ commit.author.email }}</p>
+            </div>
+          </div>
+          <div>
+            <span>{{ commit.key }}</span>
+          </div>
+        </router-link>
+      </div>
     </div>
   </div>
 </template>

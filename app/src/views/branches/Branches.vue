@@ -1,12 +1,12 @@
 <template>
-  <div class="card">
-    <div v-for="branch in branchList" :key="branch.pk">
-      <router-link :to="`/branches/${branch.name}`">
-        <div>
-          <span>Name:</span>
+  <div>
+    <h1>Branches</h1>
+    <div class="card mb-1" v-for="branch in branchList" :key="branch.pk">
+      <div class="card-content">
+        <router-link :to="`/branches/${branch.name}`">
           <span>{{ branch.name }}</span>
-        </div>
-      </router-link>
+        </router-link>
+      </div>
     </div>
   </div>
 </template>
@@ -36,3 +36,8 @@ export default class BranchesView extends Vue {
   }
 }
 </script>
+
+<style>
+.card-branch {
+}
+</style>

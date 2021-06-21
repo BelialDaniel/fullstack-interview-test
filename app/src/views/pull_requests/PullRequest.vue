@@ -1,25 +1,40 @@
 <template>
   <div v-if="pullRequest">
-    <div>
-      <div>
-        <div>{{ pullRequest.title }}</div>
-        <div>{{ pullRequest.status }}</div>
-      </div>
-      <div>
-        <div>{{ pullRequest.author.name }}</div>
-        <div>{{ pullRequest.author.email }}</div>
-      </div>
-      <div>
-        <div>
-          {{ pullRequest.description }}
+    <div class="is-flex">
+      <h1>{{ pullRequest.title }}</h1>
+      <span
+        class="tag ml-2"
+        :class="[pullRequest.status === 'open' ? 'is-success' : 'is-danger']"
+      >
+        {{ pullRequest.status }}
+      </span>
+    </div>
+    <div class="card">
+      <div class="card-content">
+        <div class="media is-flex is-flex-direction-column">
+          <div class="media-cotent mb-1">
+            <p class="title is-5">
+              {{ pullRequest.author.name }} {{ pullRequest.author.last_name }}
+            </p>
+            <p class="subtitle is-7">{{ pullRequest.author.email }}</p>
+          </div>
+          <div class="is-flex">
+            <span class="tag is-primary mr-2">
+              {{ pullRequest.from_branch }}
+            </span>
+            <span class="tag is-info">{{ pullRequest.to_breanch }}</span>
+          </div>
         </div>
-        <div>From Branch : {{ pullRequest.from_branch }}</div>
-        <div>To Branch : {{ pullRequest.to_breanch }}</div>
+        <div class="content">
+          <p>
+            {{ pullRequest.description }}
+          </p>
+        </div>
       </div>
-      <div v-if="pullRequest.status === 'open'">
-        <button @click="mergePullRequest()">Merge</button>
-        <button @click="closePullRequest()">Close</button>
-      </div>
+      <footer class="card-footer" v-if="pullRequest.status === 'open'">
+        <a class="card-footer-item" @click="mergePullRequest()"> Merge </a>
+        <a class="card-footer-item" @click="closePullRequest()"> Close </a>
+      </footer>
     </div>
   </div>
 </template>

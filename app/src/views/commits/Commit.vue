@@ -1,18 +1,22 @@
 <template>
   <div v-if="commitData">
-    <div>
-      <div>{{ commitData.author.name }}</div>
-      <div>{{ commitData.author.email }}</div>
-    </div>
-    <div>
-      <span>{{ commitData.key }}</span>
-    </div>
-    <div v-if="commitData && commitData.files">
-      <div>Modified Files: {{ commitData.files.count }}</div>
-      <div v-for="(item, index) in commitData.files.names" :key="index">
+    <h1>{{ commitData.key }}</h1>
+    <div class="card">
+      <div class="card-content">
+        <div class="media">
+          <div class="media-content">
+            <p class="title is-4">{{ commitData.author.name }}</p>
+            <p class="subtitle is-6">{{ commitData.author.email }}</p>
+          </div>
+        </div>
         <div>
-          <div>{{ item.name }}</div>
-          <div>{{ item.path }}</div>
+          <h5>Modified Files: {{ commitData.files.count }}</h5>
+          <ul v-for="(item, index) in commitData.files.names" :key="index">
+            <li>
+              <div class="heading">{{ item.name }}</div>
+              <div class="title is-7">{{ item.path }}</div>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
