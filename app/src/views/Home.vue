@@ -1,38 +1,16 @@
 <template>
-  <div>
-    <div v-for="branch in branchList" :key="branch.pk">
-      <router-link :to="`/branches/${branch.name}`">
-        <div>
-          <span>Name:</span>
-          <span>{{ branch.name }}</span>
-        </div>
-      </router-link>
-    </div>
-  </div>
+  <hello-world />
 </template>
 
 <script lang="ts">
-import { Options, Vue } from "vue-class-component";
-import { getBranches } from "@/api/branches.api";
-import BranchList from "@/models/branchList";
+import { defineComponent } from "vue";
+import HelloWorld from "../components/HelloWorld.vue";
 
-@Options({
-  components: {},
-})
-export default class Home extends Vue {
-  branchList: Array<BranchList> = [];
+export default defineComponent({
+  name: "Home",
 
-  mounted() {
-    this.getBranchList();
-  }
-
-  async getBranchList() {
-    try {
-      const response: any = await getBranches();
-      this.branchList = response.data;
-    } catch (exception) {
-      throw new Error(exception);
-    }
-  }
-}
+  components: {
+    HelloWorld,
+  },
+});
 </script>
