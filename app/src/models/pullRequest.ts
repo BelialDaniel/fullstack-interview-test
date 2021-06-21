@@ -7,5 +7,5 @@ export default interface PullRequest {
   description: string;
   status: string;
   from_branch: string;
-  to_breanch: string;
+  to_branch: string;
 }

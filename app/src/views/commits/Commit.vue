@@ -9,6 +9,12 @@
             <p class="subtitle is-6">{{ commitData.author.email }}</p>
           </div>
         </div>
+        <div class="mb-3">
+          <h5>Message</h5>
+          <p>
+            {{ commitData.message }}
+          </p>
+        </div>
         <div>
           <h5>Modified Files: {{ commitData.files.count }}</h5>
           <ul v-for="(item, index) in commitData.files.names" :key="index">

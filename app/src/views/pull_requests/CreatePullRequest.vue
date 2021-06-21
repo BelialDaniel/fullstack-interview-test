@@ -64,7 +64,7 @@
             <div class="field ml-1">
               <label class="label"> To branch </label>
               <div class="select">
-                <select v-model.trim="pullRequest.to_breanch">
+                <select v-model.trim="pullRequest.to_branch">
                   <option
                     v-for="branch in branches"
                     :value="branch.name"
@@ -118,7 +118,7 @@ export default class CreatePullRequestView extends Vue {
     description: "",
     status: "open",
     from_branch: "",
-    to_breanch: "",
+    to_branch: "",
   };
 
   mounted() {
@@ -136,7 +136,7 @@ export default class CreatePullRequestView extends Vue {
 
   async submitPullRequest() {
     const from_branch: string = this.pullRequest.from_branch;
-    const to_branch: string = this.pullRequest.to_breanch;
+    const to_branch: string = this.pullRequest.to_branch;
 
     if (!from_branch || !to_branch) {
       alert("Missing Branches for Merge request");
