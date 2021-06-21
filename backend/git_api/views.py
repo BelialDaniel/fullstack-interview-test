@@ -31,7 +31,7 @@ class PullRequestsViewSet(ModelViewSet):
             return Response(dict(error="Could not merge pull request"),
                                  status=status.HTTP_400_BAD_REQUEST)
         
-        return Response(serializer_class(pull_request).data, status=status.HTTP_200_OK)
+        return Response(self.serializer_class(pull_request).data, status=status.HTTP_200_OK)
 
     @action(detail=False, methods=['patch'])
     def close(self, request,  pk=None):
@@ -43,7 +43,7 @@ class PullRequestsViewSet(ModelViewSet):
             return Response(dict(error="Could not close pull request"),
                                  status=status.HTTP_400_BAD_REQUEST)
 
-        return Response(serializer_class(pull_request).data, status=status.HTTP_200_OK)
+        return Response(self.serializer_class(pull_request).data, status=status.HTTP_200_OK)
 
 
 class BranchesViewSe(ViewSet, GitData):
