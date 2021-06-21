@@ -1,17 +1,17 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
-import Home from "../views/Home.vue";
-import BranchView from "../views/Branch.vue";
-import Commits from "../views/Commits.vue";
-import Commit from "../views/Commit.vue";
-import PullRequests from "../views/PullRequests.vue";
-import PullRequestView from "../views/PullRequest.vue";
-import CreatePullRequest from "../views/CreatePullRequest.vue";
+import BranchView from "../views/branches/Branch.vue";
+import BranchesView from "../views/branches/Branches.vue";
+import CommitView from "../views/commits/Commit.vue";
+import CommitsView from "../views/commits/Commits.vue";
+import PullRequestView from "../views/pull_requests/PullRequest.vue";
+import PullRequestsView from "../views/pull_requests/PullRequests.vue";
+import CreatePullRequestView from "../views/pull_requests/CreatePullRequest.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
     name: "Home",
-    component: Home,
+    component: BranchesView,
   },
   {
     path: "/branches/:pk",
@@ -21,17 +21,17 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: "/commits",
     name: "Commits",
-    component: Commits,
+    component: CommitsView,
   },
   {
     path: "/commits/:hash",
     name: "Commit",
-    component: Commit,
+    component: CommitView,
   },
   {
     path: "/pull_requests/",
     name: "PullRequests",
-    component: PullRequests,
+    component: PullRequestsView,
   },
   {
     path: "/pull_requests/:id",
@@ -41,7 +41,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: "/pull_requests/create",
     name: "CreatePullRequest",
-    component: CreatePullRequest,
+    component: CreatePullRequestView,
   },
   // {
   //   path: "/about",
