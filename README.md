@@ -1,6 +1,7 @@
 # Instructions
 
 ## first install task https://taskfile.dev/#/usage
+
 - brew install go-task/tap/go-task
 
 ## init backend shell
@@ -15,10 +16,15 @@
 
 - task run_backend
 
-## install app (FE) dependencies
+## install app dependencies
 
 - task install_app_dependencies
 
-## run app (FE)
+## run app
 
 - task run_app
+
+## backend tests
+
+- task init_backend
+- poetry run python manage.py test

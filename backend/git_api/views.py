@@ -21,7 +21,7 @@ class PullRequestsViewSet(ModelViewSet):
     serializer_class = serializers.PullRequestSerializer
     permission_classes = [AllowAny, ]
 
-    @action(detail=False, methods=['patch'])
+    @action(detail=True, methods=['patch'])
     def merge(self, request,  pk=None):
         pull_request = self.get_object()
         pull_request.status = PullRequest.Status.MERGED
@@ -33,7 +33,7 @@ class PullRequestsViewSet(ModelViewSet):
         
         return Response(self.serializer_class(pull_request).data, status=status.HTTP_200_OK)
 
-    @action(detail=False, methods=['patch'])
+    @action(detail=True, methods=['patch'])
     def close(self, request,  pk=None):
         pull_request = self.get_object()
         pull_request.status = PullRequest.Status.CLOSE
