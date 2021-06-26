@@ -67,7 +67,9 @@ export default class PullRequestView extends Vue {
 
   async mergePullRequest() {
     try {
-      await merge(this.pullRequest.id);
+      if (this.pullRequest) {
+        await merge(this.pullRequest.id);
+      }
     } catch (exception) {
       throw new Error(exception);
     }
@@ -75,7 +77,9 @@ export default class PullRequestView extends Vue {
 
   async closePullRequest() {
     try {
-      await close(this.pullRequest.id);
+      if (this.pullRequest) {
+        await close(this.pullRequest.id);
+      }
     } catch (exception) {
       throw new Error(exception);
     }

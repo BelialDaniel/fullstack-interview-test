@@ -1,0 +1,17 @@
+version: "3"
+
+tasks:
+  install_backend_dependencies:
+    desc: Intall dependencies
+    cmds:
+      - poetry install
+
+  run_backend:
+    desc: Start Server
+    cmds:
+      - poetry run manage.py runserver
+
+  backend_tests:
+    desc: Run backend tests
+    cmds:
+      - poetry run manage.py tests

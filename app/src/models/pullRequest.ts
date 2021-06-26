@@ -1,7 +1,7 @@
 import Author from "./author";
 
 export default interface PullRequest {
-  id?: number;
+  id?: number | string;
   author: Author;
   title: string;
   description: string;
