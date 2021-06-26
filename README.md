@@ -26,5 +26,4 @@
 
 ## backend tests
 
-- task init_backend
-- poetry run python manage.py test
+- task backend_tests
