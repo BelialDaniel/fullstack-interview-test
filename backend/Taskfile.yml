@@ -1,17 +1,22 @@
 version: "3"
 
 tasks:
-  install_backend_dependencies:
+  init_env:
+    desc: Init environment
+    cmds:
+      - poetry shell
+
+  install_dependencies:
     desc: Intall dependencies
     cmds:
       - poetry install
 
-  run_backend:
+  run:
     desc: Start Server
     cmds:
-      - poetry run manage.py runserver
+      - poetry run python manage.py runserver
 
-  backend_tests:
+  tests:
     desc: Run backend tests
     cmds:
-      - poetry run manage.py tests
+      - poetry run python manage.py test
