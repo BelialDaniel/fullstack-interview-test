@@ -1,29 +1,55 @@
 # Instructions
 
-## first install task https://taskfile.dev/#/usage
+## Frontend
 
-- brew install go-task/tap/go-task
+```
+cd app
+```
 
-## init backend shell
+### Project setup
 
-- task init_backend
+```
+yarn install
+```
 
-## install backend dependencies
+### Compiles and hot-reloads for development
 
-- task install_backend_dependencies
+```
+yarn dev
+```
 
-## run backend server
+## Backend
 
-- task run_backend
+Before continue install task [https://taskfile.dev/#/usage]
 
-## install app dependencies
+```
+brew install go-task/tap/go-task
+```
 
-- task install_app_dependencies
+```
+cd backend
+```
 
-## run app
+### Init environment
 
-- task run_app
+```
+task init_env
+```
 
-## backend tests
+### Install dependencies
 
-- task backend_tests
+```
+task install_dependencies
+```
+
+### Run server
+
+```
+task run
+```
+
+### Run tests
+
+```
+task tests
+```
