@@ -65,21 +65,25 @@ export default class PullRequestView extends Vue {
     }
   }
 
-  async mergePullRequest() {
+  async mergePullRequest(): Promise<void> {
     try {
-      if (this.pullRequest) {
-        await merge(this.pullRequest.id);
+      if (!this.pullRequest) {
+        return;
       }
+
+      await merge(this.pullRequest.id);
     } catch (exception) {
       throw new Error(exception);
     }
   }
 
-  async closePullRequest() {
+  async closePullRequest(): Promise<void> {
     try {
-      if (this.pullRequest) {
-        await close(this.pullRequest.id);
+      if (!this.pullRequest) {
+        return;
       }
+
+      await close(this.pullRequest.id);
     } catch (exception) {
       throw new Error(exception);
     }
