@@ -40,54 +40,54 @@
 </template>
 
 <script lang="ts">
-import { Options, Vue } from "vue-class-component";
-import { getPullRequest, merge, close } from "@/api/pullRequests.api";
-import PullRequest from "@/models/pullRequest";
+import { Options, Vue } from "vue-class-component"
+import { getPullRequest, merge, close } from "@/api/pullRequests.api"
+import PullRequest from "@/models/pullRequest"
 
 @Options({
   components: {},
 })
 export default class PullRequestView extends Vue {
-  pullRequest: PullRequest | null = null;
+  pullRequest: PullRequest | null = null
 
   mounted(): void {
-    this.getPullRequestList();
+    this.getPullRequestList()
   }
 
   async getPullRequestList(): Promise<void> {
     try {
-      const id: string = this.$route.params.id as string;
-      const response: any = await getPullRequest(+id);
-      this.pullRequest = response.data;
-      console.log("Pull Request", this.pullRequest);
+      const id: string = this.$route.params.id as string
+      const response: any = await getPullRequest(+id)
+      this.pullRequest = response.data
+      console.log("Pull Request", this.pullRequest)
     } catch (exception) {
-      throw new Error(exception);
+      throw new Error(exception)
     }
   }
 
   async mergePullRequest(): Promise<void> {
     try {
       if (!this.pullRequest) {
-        return;
+        return
       }
 
-      await merge(this.pullRequest.id);
-      this.$router.push("pull_requests");
+      await merge(this.pullRequest.id)
+      this.$router.push("pull_requests")
     } catch (exception) {
-      throw new Error(exception);
+      throw new Error(exception)
     }
   }
 
   async closePullRequest(): Promise<void> {
     try {
       if (!this.pullRequest) {
-        return;
+        return
       }
 
-      await close(this.pullRequest.id);
-      this.$router.push("pull_requests");
+      await close(this.pullRequest.id)
+      this.$router.push("pull_requests")
     } catch (exception) {
-      throw new Error(exception);
+      throw new Error(exception)
     }
   }
 }

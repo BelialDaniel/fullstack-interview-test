@@ -1,6 +1,6 @@
-import Commit from "./commit";
+import Commit from "./commit"
 
 export default interface Branch {
-  name: string;
-  commits: Array<Commit>;
+  name: string
+  commits: Array<Commit>
 }

@@ -12,26 +12,26 @@
 </template>
 
 <script lang="ts">
-import { Options, Vue } from "vue-class-component";
-import { getBranches } from "@/api/branches.api";
-import BranchList from "@/models/branchList";
+import { Options, Vue } from "vue-class-component"
+import { getBranches } from "@/api/branches.api"
+import BranchList from "@/models/branchList"
 
 @Options({
   components: {},
 })
 export default class BranchesView extends Vue {
-  branchList: Array<BranchList> = [];
+  branchList: Array<BranchList> = []
 
   mounted() {
-    this.getBranchList();
+    this.getBranchList()
   }
 
   async getBranchList() {
     try {
-      const response: any = await getBranches();
-      this.branchList = response.data;
+      const response: any = await getBranches()
+      this.branchList = response.data
     } catch (exception) {
-      throw new Error(exception);
+      throw new Error(exception)
     }
   }
 }

@@ -97,17 +97,17 @@
 </template>
 
 <script lang="ts">
-import { Options, Vue } from "vue-class-component";
-import { createPullRequest } from "@/api/pullRequests.api";
-import { getBranches } from "@/api/branches.api";
-import BranchList from "@/models/branchList";
-import PullRequest from "@/models/pullRequest";
+import { Options, Vue } from "vue-class-component"
+import { createPullRequest } from "@/api/pullRequests.api"
+import { getBranches } from "@/api/branches.api"
+import BranchList from "@/models/branchList"
+import PullRequest from "@/models/pullRequest"
 
 @Options({
   components: {},
 })
 export default class CreatePullRequestView extends Vue {
-  branches: Array<BranchList> = [];
+  branches: Array<BranchList> = []
   pullRequest: PullRequest = {
     author: {
       name: "",
@@ -119,34 +119,34 @@ export default class CreatePullRequestView extends Vue {
     status: "open",
     from_branch: "",
     to_branch: "",
-  };
+  }
 
   mounted() {
-    this.init();
+    this.init()
   }
 
   async init() {
     try {
-      const response: any = await getBranches();
-      this.branches = response.data;
+      const response: any = await getBranches()
+      this.branches = response.data
     } catch (exception) {
-      throw new Error(exception);
+      throw new Error(exception)
     }
   }
 
   async submitPullRequest() {
-    const from_branch: string = this.pullRequest.from_branch;
-    const to_branch: string = this.pullRequest.to_branch;
+    const from_branch: string = this.pullRequest.from_branch
+    const to_branch: string = this.pullRequest.to_branch
 
     if (!from_branch || !to_branch) {
-      alert("Missing Branches for Merge request");
+      alert("Missing Branches for Merge request")
     }
 
     try {
-      await createPullRequest(this.pullRequest);
-      this.$router.push("pull_requests");
+      await createPullRequest(this.pullRequest)
+      this.$router.push("pull_requests")
     } catch (exception) {
-      alert(exception.errors);
+      alert(exception.errors)
     }
   }
 }

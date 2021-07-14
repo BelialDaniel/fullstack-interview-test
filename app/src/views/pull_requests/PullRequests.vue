@@ -30,26 +30,26 @@
 </template>
 
 <script lang="ts">
-import { Options, Vue } from "vue-class-component";
-import { getPullRequests } from "@/api/pullRequests.api";
-import PullRequest from "@/models/pullRequest";
+import { Options, Vue } from "vue-class-component"
+import { getPullRequests } from "@/api/pullRequests.api"
+import PullRequest from "@/models/pullRequest"
 
 @Options({
   components: {},
 })
 export default class PullRequestsView extends Vue {
-  pullRequests: Array<PullRequest> = [];
+  pullRequests: Array<PullRequest> = []
 
   mounted() {
-    this.getPullRequestList();
+    this.getPullRequestList()
   }
 
   async getPullRequestList() {
     try {
-      const response: any = await getPullRequests();
-      this.pullRequests = response.data;
+      const response: any = await getPullRequests()
+      this.pullRequests = response.data
     } catch (exception) {
-      throw new Error(exception);
+      throw new Error(exception)
     }
   }
 }

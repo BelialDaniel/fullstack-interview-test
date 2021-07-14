@@ -30,27 +30,27 @@
 </template>
 
 <script lang="ts">
-import { Options, Vue } from "vue-class-component";
-import { getCommit } from "@/api/commits.api";
-import Commit from "@/models/commit";
+import { Options, Vue } from "vue-class-component"
+import { getCommit } from "@/api/commits.api"
+import Commit from "@/models/commit"
 
 @Options({
   components: {},
 })
 export default class CommitView extends Vue {
-  commitData: Commit | null = null;
+  commitData: Commit | null = null
 
   mounted() {
-    this.getCommit();
+    this.getCommit()
   }
 
   async getCommit() {
     try {
-      const commitHash: string = this.$route.params.hash as string;
-      const response: any = await getCommit(commitHash);
-      this.commitData = response.data;
+      const commitHash: string = this.$route.params.hash as string
+      const response: any = await getCommit(commitHash)
+      this.commitData = response.data
     } catch (exception) {
-      throw new Error(exception);
+      throw new Error(exception)
     }
   }
 }

@@ -1,11 +1,11 @@
-import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
-import BranchView from "../views/branches/Branch.vue";
-import BranchesView from "../views/branches/Branches.vue";
-import CommitView from "../views/commits/Commit.vue";
-import CommitsView from "../views/commits/Commits.vue";
-import PullRequestView from "../views/pull_requests/PullRequest.vue";
-import PullRequestsView from "../views/pull_requests/PullRequests.vue";
-import CreatePullRequestView from "../views/pull_requests/CreatePullRequest.vue";
+import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router"
+import BranchView from "../views/branches/Branch.vue"
+import BranchesView from "../views/branches/Branches.vue"
+import CommitView from "../views/commits/Commit.vue"
+import CommitsView from "../views/commits/Commits.vue"
+import PullRequestView from "../views/pull_requests/PullRequest.vue"
+import PullRequestsView from "../views/pull_requests/PullRequests.vue"
+import CreatePullRequestView from "../views/pull_requests/CreatePullRequest.vue"
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -52,11 +52,11 @@ const routes: Array<RouteRecordRaw> = [
   //   component: () =>
   //     import(/* webpackChunkName: "about" */ "../views/About.vue"),
   // },
-];
+]
 
 const router = createRouter({
   history: createWebHashHistory(),
   routes,
-});
+})
 
-export default router;
+export default router

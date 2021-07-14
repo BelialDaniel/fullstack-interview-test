@@ -29,32 +29,32 @@
 </template>
 
 <script lang="ts">
-import { Options, Vue } from "vue-class-component";
-import { getBranch } from "@/api/branches.api";
-import Branch from "@/models/branch";
+import { Options, Vue } from "vue-class-component"
+import { getBranch } from "@/api/branches.api"
+import Branch from "@/models/branch"
 
 @Options({
   components: {},
 })
 export default class BranchView extends Vue {
-  branch: Branch | null = null;
+  branch: Branch | null = null
 
   mounted() {
-    this.getBranch();
+    this.getBranch()
   }
 
   async getBranch() {
     try {
-      const branchName: string = this.$route.params.pk as string;
-      const response: any = await getBranch(branchName);
-      this.branch = response.data;
+      const branchName: string = this.$route.params.pk as string
+      const response: any = await getBranch(branchName)
+      this.branch = response.data
     } catch (exception) {
-      throw new Error(exception);
+      throw new Error(exception)
     }
   }
 
   onClick() {
-    console.log("Clicked xD");
+    console.log("Clicked xD")
   }
 }
 </script>
