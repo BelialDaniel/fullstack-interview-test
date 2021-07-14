@@ -144,7 +144,7 @@ export default class CreatePullRequestView extends Vue {
 
     try {
       await createPullRequest(this.pullRequest);
-      this.$router.push("/pull_requests");
+      this.$router.push("pull_requests");
     } catch (exception) {
       alert(exception.errors);
     }

@@ -50,11 +50,11 @@ import PullRequest from "@/models/pullRequest";
 export default class PullRequestView extends Vue {
   pullRequest: PullRequest | null = null;
 
-  mounted() {
+  mounted(): void {
     this.getPullRequestList();
   }
 
-  async getPullRequestList() {
+  async getPullRequestList(): Promise<void> {
     try {
       const id: string = this.$route.params.id as string;
       const response: any = await getPullRequest(+id);
@@ -72,6 +72,7 @@ export default class PullRequestView extends Vue {
       }
 
       await merge(this.pullRequest.id);
+      this.$router.push("pull_requests");
     } catch (exception) {
       throw new Error(exception);
     }
@@ -84,6 +85,7 @@ export default class PullRequestView extends Vue {
       }
 
       await close(this.pullRequest.id);
+      this.$router.push("pull_requests");
     } catch (exception) {
       throw new Error(exception);
     }
